@@ -24,9 +24,17 @@ void print_input_short() {
 }
 
 void char_count() {
-	long nc = 0;
+	double nc = 0;
 	while(getchar() != EOF)
 		++nc;  // ++nc is more efficient
+	printf("%.0f\n", nc);  // using %.0f to print double or float
+}
+
+void char_count_forloop() {
+	long nc
+
+	for(long nc = 0; getchar() != EOF; ++nc)
+
 	printf("%ld\n", nc);  // %ld used to print long int
 }
 
@@ -38,6 +46,7 @@ int main()
 	float c = 3.00001, d = 4.001;
 	char c1, c2;
 
+	char_count();
 	print_input();
 	/*vulnerable(buf);*/
 	printf("%d\n", authenticated);
