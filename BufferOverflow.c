@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define IN 1  /* inside a word */
+#define OUT 0 
 
 void vulnerable(char* buf){
 	gets(buf);
@@ -31,7 +33,7 @@ void char_count() {
 }
 
 void char_count_forloop() {
-	long nc
+	long nc;
 
 	for(long nc = 0; getchar() != EOF; ++nc)
 
@@ -49,6 +51,36 @@ void line_count() {
 
 }
 
+void word_count() {
+	int c, nl, nw, nc, state;
+
+	state = OUT;
+	nl = nc = nw = 0; //这里是传值 不是传引用 C只用指针表示传引用
+	while((c = getchar()) != EOF) {
+		++nc;
+		if(c == '\n')
+			++nl;
+		if(c == ' ' || c == '\n' || c == '\t')
+			state = OUT;
+		else if(state == OUT) {
+			state = IN;
+			++nw;
+		}
+	}
+	printf("nw: %d\n nl: %d\n nc: %d\n", nw, nl, nc);
+}
+
+/* this is the function to decide whether passing value or reference */
+void pass_what() {
+	int a = 1;
+	int b = a;
+	int* c = &a;
+	printf("b = %d, c = %d\n", b, *c);
+	a = 2;
+	printf("set a = 2, b =: %d\n", b);  // b = 1. So C is passing value
+	printf("c = %d\n", *c); // passing reference only when pointer is used
+}
+
 int main()
 {
 	char buf[2];
@@ -57,8 +89,10 @@ int main()
 	float c = 3.00001, d = 4.001;
 	char c1, c2;
 
+	pass_what();
+/*	word_count();
 	char_count();
-	print_input();
+	print_input();*/
 	/*vulnerable(buf);*/
 	printf("%d\n", authenticated);
 	printf("%d %d \n", a, b);
