@@ -98,11 +98,18 @@ void count_occurance() {
 			++nwhite;
 		else
 			++nother;
-		
+
 	printf("digits= ");
 	for(i = 0; i < 10; i ++)
 		printf("%d ", ndigit[i]);
 	printf(", white space = %d, other = %d\n", nwhite, nother);
+}
+
+/* C语言当传variable时，传value。当传array时，传reference（pointer/address） */
+void pass_by_value(int n) {
+	int i;
+	for(i = 0; i < n; --n)
+		printf("i = %d, n = %d\n", i, n);
 }
 
 int main()
@@ -112,13 +119,16 @@ int main()
 	int a = 1, b = 2, a1 = 16;
 	float c = 3.00001, d = 4.001;
 	char c1, c2;
+	int n = 5;
 
-	count_occurance();
-/*	pass_what();
-	word_count();
-	char_count();
-	print_input();*/
-	/*vulnerable(buf);*/
+	pass_by_value(n);
+	printf("the n in main frange is: %d\n", n);
+	// count_occurance();
+	// pass_what();
+	// word_count();
+	// char_count();
+	// print_input();
+	// vulnerable(buf);
 	printf("%d\n", authenticated);
 	printf("%d %d \n", a, b);
 	printf("%3.1f %6f \n", c, d);
