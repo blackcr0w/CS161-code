@@ -5,6 +5,17 @@ void vulnerable(char* buf){
 	gets(buf);
 }
 
+void print_input() {
+	int c;
+	c = getchar();
+	/* 可以一次输入多个字符，也能打印出来 
+	EOD = ctrl + D */
+	while(c != EOF) {
+		putchar(c);
+		c = getchar();
+	}
+}
+
 int main()
 {
 	char buf[2];
@@ -13,6 +24,7 @@ int main()
 	float c = 3.00001, d = 4.001;
 	char c1, c2;
 
+	print_input();
 	/*vulnerable(buf);*/
 	printf("%d\n", authenticated);
 	printf("%d %d \n", a, b);
