@@ -81,6 +81,30 @@ void pass_what() {
 	printf("c = %d\n", *c); // passing reference only when pointer is used
 }
 
+void count_occurance() {
+	int c, i, nwhite, nother;
+	int ndigit[10];
+
+	nwhite = nother = 0;
+	for(i = 0; i < 10; ++i)
+		ndigit[i] = 0;
+
+	while((c = getchar()) != EOF)
+	// 所有的if-else结构同属于单独一个逻辑结构，因此while不需要大括号
+	// 牛逼！！！
+		if(c >= '0' && c <= '9')
+			++ndigit[c - '0'];
+		else if(c == ' ' || c == '\n' || c == '\t')
+			++nwhite;
+		else
+			++nother;
+		
+	printf("digits= ");
+	for(i = 0; i < 10; i ++)
+		printf("%d ", ndigit[i]);
+	printf(", white space = %d, other = %d\n", nwhite, nother);
+}
+
 int main()
 {
 	char buf[2];
@@ -89,8 +113,9 @@ int main()
 	float c = 3.00001, d = 4.001;
 	char c1, c2;
 
-	pass_what();
-/*	word_count();
+	count_occurance();
+/*	pass_what();
+	word_count();
 	char_count();
 	print_input();*/
 	/*vulnerable(buf);*/
