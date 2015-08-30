@@ -38,6 +38,17 @@ void char_count_forloop() {
 	printf("%ld\n", nc);  // %ld used to print long int
 }
 
+void line_count() {
+	int c, nl;
+	nl = 0;
+	while((c = getchar()) != EOF) {
+		if (c == '\n')
+			++nl;
+	printf("%d\n", nl);
+	}
+
+}
+
 int main()
 {
 	char buf[2];
