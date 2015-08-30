@@ -6,7 +6,7 @@ void vulnerable(char* buf){
 }
 
 void print_input() {
-	int c;
+	int c; // using "int" to represent 'char'
 	c = getchar();
 	/* 可以一次输入多个字符，也能打印出来 
 	EOD = ctrl + D */
@@ -14,6 +14,20 @@ void print_input() {
 		putchar(c);
 		c = getchar();
 	}
+}
+
+void print_input_short() {
+	int c;
+	while((c = getchar()) != EOF) {
+		putchar(c);
+	}
+}
+
+void char_count() {
+	long nc = 0;
+	while(getchar() != EOF)
+		++nc;  // ++nc is more efficient
+	printf("%ld\n", nc);  // %ld used to print long int
 }
 
 int main()
