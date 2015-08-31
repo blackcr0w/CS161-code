@@ -31,6 +31,8 @@ int getline(void)
 {
 	int c, i;
 	extern char line[];
+	 
+	 
 
 
 }
