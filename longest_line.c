@@ -40,6 +40,7 @@ int get_line(char s[], int lim)
 	return i;
 }
 
+/*函数argument中的数组最好不要限定长度*/
 void copy(char to[], char from[])
 {
 	int i;
