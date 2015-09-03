@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #define MAXLINE 1000
 
 int get_line(char line[], int maxline);
@@ -7,6 +8,9 @@ int str_index(char source[], char searchfor[]);
 
 char pattern[] = "ould";
 int my_atoi(char s[]);
+int my_atoi2(char s[]);
+int my_lower(int c);
+double my_atof(char s[]);
 
 int main()
 {
@@ -55,6 +59,32 @@ int my_atoi(char s[])
 	for (i = 0; s[i] >= '0' && s[i] <= '9'; ++i)
 		n = 10 * n + (s[i] - '0');
 	return n;
+}
+
+int my_atoi2(cahr s[])
+{
+/*	C不允许在一个函数之内define另一个函数
+	但是可以declare另一个函数*/
+	double atof(char s[]);
+	return (int) ator(s);
+}
+
+int my_lower(int c) 
+{
+	if (c >= 'A' && c <= 'Z')
+		return c - 'A' + 'a';
+	else 
+		return c;
+}
+
+double my_atof(char s[])
+{
+	double val, power;
+	int i, sign;
+
+	for (i = 0; isspace(s[i]); i++)
+		;
+	sign = (s[i] ==  '-') ? -1 : 1;
 }
 
 
